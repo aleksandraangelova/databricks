@@ -32,7 +32,7 @@ echo "Latest wheel file path: $LATEST_WHL_FILE"
 ###########################################
 # Deploy the Cluster
 ###########################################
-CLUSTER_JSON=$(cat < clusters/cluster_template.json)
+CLUSTER_JSON=$(cat < cluster_template.json)
 CLUSTER_NAME=$(echo "${CLUSTER_JSON}" | jq -r '.cluster_name')
 
 # Fetch Existing Cluster ID if Exists
@@ -83,7 +83,7 @@ fi
 ###########################################
 # Install the Latest Wheel on the Cluster
 ###########################################
-LIBRARY_INSTALL_JSON=$(envsubst < clusters/library_install.json)
+LIBRARY_INSTALL_JSON=$(envsubst < library_install.json)
 echo "Installing latest wheel file"
 
 databricks api post /api/2.0/libraries/install \
